@@ -1,0 +1,9 @@
+A poor guy's solution to listen Nepali Radio's in command line. Easiest would be to find some streaming
+link and play through the player that has streaming support.
+
+
+* Application Logic
+  - Get Radio/FM link
+    - curl the [[http://radio.nepal.fm/radio-feed/][radio-feed]] in ~$HOME/.radio-feed.xml~
+    - parse the file and save in ~$HOME/.radio-feed~
+  - give the options to select the radio links
