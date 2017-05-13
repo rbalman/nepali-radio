@@ -27,24 +27,41 @@ function get_radio_station_link {
 
 }
 
-## Echos the list
+function play_radio {
 
+    radio_station_link=$(get_radio_station_link $radio_station_number)
+    echo "playing $radio_station_link" && sleep 2
+    mplayer $radio_station_link
+
+}
+
+function print_files {
+
+cat -n $RADIO_FEED
+
+}
+
+## Echos the list
 get_radio_links
 parse_the_links
+print_files
 
-i=0;
-while read -r line
-do
-    i=$((i + 1))
-    echo $i.$line
-    
-done < $RADIO_FEED
 
 while true
 do
-    echo -n "staion:number ~>" ; read radio_station_number
-    radio_station_link=$(get_radio_station_link $radio_station_number)
-    echo "playing $radio_station_link" && sleep 2
+    echo -n "Station:Number ~> " ; read radio_station_number
+
+    case $radio_station_number in
+	[0-9]*) play_radio $radio_station_number
+		;;
+	quit|exit|q) echo "exiting.." && exit 0
+	        ;;
+	h|help) echo "not much to help"
+		;;
+	* ) echo "Invalid Entry"
+	        ;;
+    esac
     
-    mplayer $radio_station_link
 done
+
+
