@@ -7,3 +7,5 @@ link and play through the player that has streaming support.
     - curl the [[http://radio.nepal.fm/radio-feed/][radio-feed]] in ~$HOME/.radio-feed.xml~
     - parse the file and save in ~$HOME/.radio-feed~
   - give the options to select the radio links
+ 
+ 
